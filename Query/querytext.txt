@@ -1,0 +1,39 @@
+#include stdafx.h
+#include TextQuery.h
+TextQuery::TextQuery()
+{
+}
+TextQuery::TextQuery(ifstream &infile)
+{
+	string line,word;
+	while (getline(infile,line))
+	{
+		data.push_back(line);
+		istringstream iss(line);
+		while (iss >> word)
+		{
+			if (word_ln.find(word) == word_ln.end())//当前单词不在map中
+			{
+				set<int> linenum;
+				linenum.insert(data.size());
+				word_ln[word] = linenum;
+			}
+			else
+				word_ln[word].insert(data.size());//set中插入当前行号
+			
+		}
+	}
+}
+QueryResult TextQuery::query(const string &s)
+{
+	if (word_ln.find(s) == word_ln.end())
+		cout << "There is no found" << endl;
+	else
+	{
+		QueryResult qr(s, word_ln[s].size(), word_ln[s], data[word_ln[s]]);
+		return qr;
+	}
+}
+TextQuery::~TextQuery()
+{
+}
