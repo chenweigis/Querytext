@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Query_base" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAIAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Query_base.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndQuery" Collapsed="true">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>AndQuery.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BinaryQuery" Collapsed="true">
+    <Position X="5.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAEAAAAAAIAAAAAAAAABAABAAAAAAAAAIA=</HashCode>
+      <FileName>BinaryQuery.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NoQuery" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAQAAAIAAAAAAAAAAAAAAAAIACAAAAA=</HashCode>
+      <FileName>NoQuery.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrQuery" Collapsed="true">
+    <Position X="6.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>OrQuery.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Query" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAIAAAAAAAAAAAgAACAAAAAAAAA=</HashCode>
+      <FileName>Query.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QueryResult" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQBAACCAAABAAAAAAAAABAYQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QueryResult.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextQuery" Collapsed="true">
+    <Position X="8.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAIAAIAYAAAAAAA=</HashCode>
+      <FileName>TextQuery.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WordQuery" Collapsed="true">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAgAAAIAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>WordQuery.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

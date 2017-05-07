@@ -13,6 +13,7 @@ using namespace std;
 class TextQuery
 {
 public:
+	using line_no = vector<string>::size_type;//为了使代码更易读，定义一个类型成员来引用行号
 	TextQuery();
 	TextQuery(ifstream &infile);
 	~TextQuery();
@@ -22,6 +23,6 @@ public:
 
 private:
 	shared_ptr<vector<string>> data;
-	map<string, set<int>> word_ln;
+	map<string, set<line_no>> word_ln;
 };
 

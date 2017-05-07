@@ -1,48 +1,40 @@
-// Query.cpp : 定义控制台应用程序的入口点。
-//
-/************************************************************************/
-/* 需求：文本查询程序
-（1）读取一个给定的文件
-（2）在文件中查询一个单词，返回单词出现的次数以及所在行的列表（展示单词所在行的内容）
-（3）要求如果一个单词在某行出现多次，此行只出现一次，行按照升序排列
-*/
-/************************************************************************/
-
-/************************************************************************/
-/*分析：
-（1）读取文件 fstream getline（）按行读取;istringstream读取每一个单词;
-（2）使用vector<string>保存文件，set按顺序不重复保存行号的集合，map保存单词和行号的set的对应关系
-（3）使用一个类TextQuery来封装输入文件的操作，使用QueryResult来保存查询结果，两个类使用shared_ptr共享数据
-
-*/
-/************************************************************************/
-
 #include "stdafx.h"
-#include <iostream>
-#include <fstream>
-#include "TextQuery.h"
-#include "QueryResult.h"
-
+#include "Query.h"
+#include <memory>
+#include "NoQuery.h"
+#include "AndQuery.h"
+#include "OrQuery.h"
 using namespace std;
 
-void runQueries(ifstream &infile);
-int main()
+//Query::Query()
+//{
+//}
+//
+
+//Query::~Query()
+//{
+//}
+//NoQuery的构造函数，Query的构造函数：Query(shared_ptr<Query_base> query):q(query){}
+
+//要返回一个Query类型，要是一个指向NoQuery的Query_base的指针；所以需要一个构造函数，
+//从Query_base的指向NoQuery的指针到Query的构造函数，这个构造函数不应该被用户使用，所以定义为私有
+//如果操作符重载不定义为友元函数，也可以实现，但是看起来不是很清晰；
+//非友元版的话，含有一个this，对一目操作符影响不大，二目操作符只接受一个参数，左侧为默认，可读性差
+Query operator~(const Query &operand)
 {
-	ifstream infile("./querytext.txt");
-	runQueries(infile);
-	system("pause");
-    return 0;
+	return shared_ptr<Query_base>(new NoQuery(operand));
 }
-void runQueries(ifstream &infile)
+Query operator&(const Query &lhs, const Query &rhs)
 {
-	TextQuery tq(infile);
-	QueryResult qr;
-	while (1)
-	{
-		cout << "enter a word to look for,or q to quit: ";
-		string s;
-		if (!(cin >> s) || s == "q")
-			break;
-		qr.print(cout, tq.query(s));
-	}
+	return shared_ptr<Query_base>(new AndQuery(lhs, rhs));
+}
+Query operator|(const Query &lhs, const Query &rhs)
+{
+	return shared_ptr<Query_base>(new OrQuery(lhs, rhs));
+}
+
+ostream& operator << (ostream &os, const Query &query)
+{
+	os << query.rep();//运行时动态调用
+	return os;
 }
