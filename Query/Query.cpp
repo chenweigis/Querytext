@@ -14,6 +14,7 @@ using namespace std;
 //Query::~Query()
 //{
 //}
+
 //NoQuery的构造函数，Query的构造函数：Query(shared_ptr<Query_base> query):q(query){}
 
 //要返回一个Query类型，要是一个指向NoQuery的Query_base的指针；所以需要一个构造函数，
@@ -32,7 +33,7 @@ Query operator|(const Query &lhs, const Query &rhs)
 {
 	return shared_ptr<Query_base>(new OrQuery(lhs, rhs));
 }
-
+//输入输出运算符第一个参数是iostream，所以不能作为成员函数进行重载，成员函数默认的第一个参数的隐藏的this
 ostream& operator << (ostream &os, const Query &query)
 {
 	os << query.rep();//运行时动态调用

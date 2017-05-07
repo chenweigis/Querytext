@@ -13,6 +13,9 @@ NoQuery::~NoQuery()
 QueryResult NoQuery::eval(const TextQuery& text) const
 {
 	auto result = query.eval(text);//动态调用到WordQuery?
+	//query是Query对象，编译时绑定调用Query的eval,通过Query_base类的指针指向一个虚函数：eval，实现多态调用
+	//调用哪一个eval取决于指针指向哪个对象
+	//这里的指针指向的WordQuery(Query接受string类型的构造函数分配内存使用的是WordQuery)
 	auto ret_lines = make_shared<set<line_no>>();
 	auto beg = result.begin(), end = result.end();
 	auto sz = result.get_file()->size();

@@ -23,6 +23,7 @@
 #include "TextQuery.h"
 #include "QueryResult.h"
 #include "Query.h"
+//#include "BinaryQuery.h"
 
 using namespace std;
 
@@ -31,6 +32,7 @@ int main()
 {
 	
 
+	//BinaryQuery bq;
 	ifstream infile("./querytext.txt");
 	runQueries(infile);
 	system("pause");

@@ -14,7 +14,7 @@ class Query
 //	Query() :q(nullptr) {}
 //	~Query();
 
-	friend Query operator~(const Query&);	//为什么定义成友元:要使用Query的私有构造函数
+	friend Query operator~(const Query&);	//为什么定义成友元:见实现部分说明
 	friend Query operator&(const Query&, const Query&);
 	friend Query operator|(const Query&, const Query&);
 
@@ -27,7 +27,8 @@ public:
 	//接口函数，调用对Query_base的操作
 	QueryResult eval(const TextQuery &t) const//此函数不会改变对象内容，所以采用const函数
 	{
-		return q->eval(t);
+		//动态绑定，调用哪个eval取决于q指向哪个对象
+		return q->eval(t);//Query_base是抽象类，eval是私有函数，如何访问到的？//通过友元类，将Query声明为Query_base的友元
 	}
 	string rep() const { return q->rep(); }
 	
